@@ -8,9 +8,11 @@ let validEmail = "nina@gmail.com";
 let validPassword = "test123456";
 let title = faker.animal.cat();
 let desc = faker.lorem.words(10);
-// let title256 = faker.lorem.word(256);      -|
-// let desc1001 = faker.lorem.word(1001);      | ne radi :(
-// let randomImage = faker.image.cat(".jpg"); _|
+// let title256 = faker.lorem.word(256);                                     ┐
+// let desc1001 = faker.lorem.word(1001);                                    |
+let randomImage = faker.image.imageUrl(1234, 2345, "cat", true, ".jpg"); //  | ne radi :(
+// faker.image.cat()                                                         |
+let randomImage2 = faker.internet.avatar(); //                               ┘
 let longTitle =
   "Ipsum Dapibus Curabitur Primis Nibh Iaculis Ipsum Nisl Hac Risus Pharetra Nisi Habitasse Ante Curabitur Molestie Vivamus Cursus Sagittis Mauris Lobortis Cubilia Vivamus Laoreet Elementum Eu Etiam Nulla Taciti Iaculis Tristique Pellentesque Euismod Aliquam.";
 // faker.random.words(40);
@@ -43,7 +45,7 @@ describe("create gallery", () => {
     createGalleryPage.create(" ", desc, catImage);
   });
 
-  it("create gallery with short title", () => {
+  it("too short title", () => {
     createGalleryPage.create("1", desc, catImage);
   });
 
@@ -51,11 +53,15 @@ describe("create gallery", () => {
     createGalleryPage.create(title, desc, " ");
   });
 
-  it("create gallery with too long title", () => {
+  it("too long title", () => {
     createGalleryPage.create(longTitle, desc, catImage);
   });
 
-  it.only("create gallery with too long desctiprion", () => {
+  it("too long desctiprion", () => {
     createGalleryPage.create(title, longParagraph, catImage);
+  });
+
+  it.only("wrong image format", () => {
+    createGalleryPage.create(title, desc, randomImage);
   });
 });
