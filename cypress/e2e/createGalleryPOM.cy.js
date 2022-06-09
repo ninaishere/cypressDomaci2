@@ -33,7 +33,7 @@ describe("create gallery", () => {
     cy.url().should("include", "/create");
   });
 
-  it("create gallery", () => {
+  it.only("create gallery", () => {
     createGalleryPage.create(title, desc, catImage);
   });
 
@@ -61,7 +61,7 @@ describe("create gallery", () => {
     createGalleryPage.create(title, longParagraph, catImage);
   });
 
-  it.only("wrong image format", () => {
+  it("wrong image format", () => {
     createGalleryPage.create(title, desc, randomImage);
   });
 });
