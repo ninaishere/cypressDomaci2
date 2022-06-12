@@ -46,9 +46,11 @@ describe("all galleries page", () => {
     cy.get(allGalleriesPage.allGalleriesHeading);
   });
 
-  it("test if galleries have title and author", () => {
+  it("test if galleries have title, author, date and image", () => {
     cy.get(allGalleriesPage.galleryTitle);
     cy.get(allGalleriesPage.galleryAuthor);
+    cy.get(allGalleriesPage.galleryDate);
+    cy.get(allGalleriesPage.galleryImage);
   });
 
   it("search term", () => {

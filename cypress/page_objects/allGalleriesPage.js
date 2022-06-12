@@ -31,6 +31,14 @@ class AllGalleriesPage {
     return cy.get("p a.box-title");
   }
 
+  get galleryDate() {
+    return cy.get("small");
+  }
+
+  get galleryImage() {
+    return cy.get(".responsive-image");
+  }
+
   search(searchTerm) {
     this.searchField.type(searchTerm);
     this.filterBtn.click();
