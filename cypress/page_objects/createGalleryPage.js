@@ -27,7 +27,7 @@ class CreateGalleryPage {
     return cy.get(".btn-custom");
   }
 
-  get arrowBtnEq() {
+  get deleteFirstImage() {
     return cy.get("i").eq(0);
   }
 
@@ -44,7 +44,7 @@ class CreateGalleryPage {
   }
 
   get addImageBtn() {
-    return cy.get("form > :nth-child(3) > :nth-child(3)");
+    return cy.get(".container button").eq(2);
   }
 
   get submitBtn() {
