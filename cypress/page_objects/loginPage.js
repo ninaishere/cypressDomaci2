@@ -15,8 +15,20 @@ class LoginPage {
     return cy.get("button");
   }
 
+  get myGalleriesBtn() {
+    return cy.get(".nav-link").eq(1);
+  }
+
   get logoutBtn() {
     return cy.get(".nav-link").eq(3);
+  }
+
+  get errorMessage() {
+    return cy.get('p[class="alert alert-danger"]');
+  }
+
+  get loginHeading() {
+    return cy.get("h1");
   }
 
   clickLoginBtn() {

@@ -15,12 +15,32 @@ class CreateGalleryPage {
     return cy.get(".input-group > .form-control");
   }
 
-  get upInputBtn() {
-    return cy.get(".input-buttons:nth-child(1)");
+  get imageInput2() {
+    return this.galleryInputParent.find("input").eq(3);
   }
 
-  get downInputBtn() {
-    return cy.get(".input-buttons:nth-child(2)");
+  get galleryInputParent() {
+    return cy.get(".form-group");
+  }
+
+  get submitButtonsParent() {
+    return cy.get(".btn-custom");
+  }
+
+  get arrowBtnEq() {
+    return cy.get("i").eq(0);
+  }
+
+  get arrowUp() {
+    return this.galleryInputParent.find("button").eq(1);
+  }
+
+  get arrowDown() {
+    return this.galleryInputParent.find("button").eq(2);
+  }
+
+  get deleteImg2Btn() {
+    return this.galleryInputParent.find("button").eq(3);
   }
 
   get addImageBtn() {
@@ -28,19 +48,19 @@ class CreateGalleryPage {
   }
 
   get submitBtn() {
-    return cy.get("form > :nth-child(4)");
+    return this.submitButtonsParent.first();
   }
 
   get cancelBtn() {
-    return cy.get("form > :nth-child(5)");
+    return this.submitButtonsParent.last();
   }
 
-  clickUpInputBtn() {
-    this.upInputBtn.click();
+  clickarrowUp() {
+    this.arrowUp.click();
   }
 
-  clickDownInputBtn() {
-    this.downInputBtn.click();
+  clickarrowDown() {
+    this.arrowDown.click();
   }
 
   clickAddImageBtn() {
@@ -60,6 +80,26 @@ class CreateGalleryPage {
     this.descriptionInput.type(desc);
     this.imageInput.type(image);
     this.clickSubmitBtn();
+  }
+
+  moveImage(title, desc, image, image2) {
+    this.titleInput.type(title);
+    this.descriptionInput.type(desc);
+    this.imageInput.type(image);
+    this.addImageBtn.click();
+    this.imageInput2.type(image2);
+    this.clickarrowDown();
+    this.clickSubmitBtn();
+  }
+
+  deleteImage(title, desc, image, image2) {
+    this.titleInput.type(title);
+    this.descriptionInput.type(desc);
+    this.imageInput.type(image);
+    this.addImageBtn.click();
+    this.imageInput2.type(image2);
+    this.deleteImg2Btn.click();
+    this.clickCancelBtn();
   }
 }
 
